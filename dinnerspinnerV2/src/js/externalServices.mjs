@@ -1,5 +1,10 @@
 import { getLocalStorage, setLocalStorage, milesToMeters, reportError, displayRestaurant } from "./utils.mjs";
 import { displayAlerts } from "./alert.mjs";
+import { config } from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+    config();
+}
 
 const apiKey = process.env.VITE_GOOGLE_PLACES_API_KEY;
 //const type = 'restaurant'; // Fixed typo
