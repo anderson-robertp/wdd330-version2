@@ -1,7 +1,7 @@
 import { getLocalStorage, setLocalStorage, milesToMeters, reportError, displayRestaurant } from "./utils.mjs";
 import { displayAlerts } from "./alert.mjs";
 
-const apiKey = import.meta.env.VITE_GOOGLE_PLACES_API_KEY;
+const apiKey = process.env.VITE_GOOGLE_PLACES_API_KEY;
 //const type = 'restaurant'; // Fixed typo
 //const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 const baseURL = import.meta.env.VITE_SERVER_URL;
