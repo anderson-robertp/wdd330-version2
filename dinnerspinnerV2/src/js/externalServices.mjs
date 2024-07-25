@@ -14,7 +14,7 @@ async function fetchRestaurants(range, location, price, rating) {
     const radius = milesToMeters(range);
     //console.log(`Coordinates: ${coords}`);
     //console.log(`Radius: ${radius}`);
-    //console.log(`Received parameters: address=${coords}, range=${radius}, price=${price}, rating=${rating}`)
+    console.log(`Received parameters: address=${coords}, range=${radius}, price=${price}, rating=${rating}`)
     
     try {
         //console.log("Googling restautants");
