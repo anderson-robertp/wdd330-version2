@@ -1,6 +1,6 @@
 import { getLocalStorage, setLocalStorage, milesToMeters, reportError, displayRestaurant } from "./utils.mjs";
 import { displayAlerts } from "./alert.mjs";
-import { config } from '../dotenv';
+import { config } from './dotenv';
 
 if (process.env.NODE_ENV !== 'production') {
     config();
