@@ -1,12 +1,12 @@
 import { getLocalStorage, setLocalStorage, milesToMeters, reportError, displayRestaurant } from "./utils.mjs";
 import { displayAlerts } from "./alert.mjs";
-import { config } from './dotenv';
+//import { config } from './dotenv';
 
-if (process.env.NODE_ENV !== 'production') {
+/*if (process.env.NODE_ENV !== 'production') {
     config();
-}
+}*/
 
-const apiKey = process.env.VITE_GOOGLE_PLACES_API_KEY;
+//const apiKey = process.env.VITE_GOOGLE_PLACES_API_KEY;
 //const type = 'restaurant'; // Fixed typo
 //const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 const baseURL = import.meta.env.VITE_SERVER_URL;
@@ -15,15 +15,15 @@ const baseURL = import.meta.env.VITE_SERVER_URL;
 async function fetchRestaurants(range, location, price, rating) {
     const currentUrl = window.location.hostname;
     console.log(`Current URL: ${currentUrl}`);
-    const coords = await getCoordinates(location);
+    //const coords = await getCoordinates(location);
     const radius = milesToMeters(range);
     //console.log(`Coordinates: ${coords}`);
     //console.log(`Radius: ${radius}`);
-    console.log(`Received parameters: address=${coords}, range=${radius}, price=${price}, rating=${rating}`)
+    console.log(`Received parameters: address=${location}, range=${radius}, price=${price}, rating=${rating}`)
     
     try {
         //console.log("Googling restautants");
-        const response = await fetch(`/.netlify/functions/fetch-restaurant?address=${coords}&range=${radius}&price=${price}&rating=${rating}`);
+        const response = await fetch(`/.netlify/functions/fetch-restaurant?address=${location}&range=${radius}&price=${price}&rating=${rating}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -71,7 +71,7 @@ export async function displayRandomRestaurant(range, location, price, rating) {
 }
 
 // Convert address to coordinates
-export async function getCoordinates(address) {
+/*export async function getCoordinates(address) {
     const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
 
     try {
@@ -92,7 +92,7 @@ export async function getCoordinates(address) {
         reportError(`Coordinates: ${error}`);
     }
     return null; // Ensure a return value in case of error
-}
+}*/
 
 // Login request
 export async function loginRequest(creds) {
