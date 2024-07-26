@@ -9,7 +9,7 @@ import { displayAlerts } from "./alert.mjs";
 //const apiKey = process.env.VITE_GOOGLE_PLACES_API_KEY;
 //const type = 'restaurant'; // Fixed typo
 //const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-const baseURL = import.meta.env.VITE_SERVER_URL;
+//const baseURL = import.meta.env.VITE_SERVER_URL;
 
 // Fetch restaurants based on range and location
 async function fetchRestaurants(range, location, price, rating) {
@@ -96,15 +96,15 @@ export async function displayRandomRestaurant(range, location, price, rating) {
 
 // Login request
 export async function loginRequest(creds) {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(creds),
-    };
-    return await fetch(baseURL + "login", options).then(convertToJson);
-  }
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(creds),
+  };
+  return await fetch("/.netlify/functions/login", options).then(convertToJson);
+}
 
   async function convertToJson(res) {
     const jsonResponse = await res.json();
@@ -118,14 +118,14 @@ export async function loginRequest(creds) {
     }
   }
 // testing registration
-  export async function register(info,token) {
-    const options = {
-      method: "POST",
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(info),
-    }
-    return await fetch(baseURL + "/users", options).then(convertToJson);
-  }
+export async function register(info, token) {
+  const options = {
+    method: "POST",
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ info, token }),
+  };
+  return await fetch("/.netlify/functions/register", options).then(convertToJson);
+}

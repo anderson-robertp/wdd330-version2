@@ -13,10 +13,10 @@ export async function login(email, password, redirect = "/") {
             // Set token
             setLocalStorage("so_token", response);
             // Redirect to previous page
+            // @ts-ignore
             window.location = redirect;
         } else {
             displayAlerts("Login failed. Please try again.");
-            displayAlerts("Login error. Please try again later.");
         }
     } catch (error) {
         console.error("Login error:", error);
@@ -69,6 +69,7 @@ export function checkLogin() {
         // check out what location contains
         console.log(location);
         // redirect by updating window.location
+        // @ts-ignore
         window.location = `/login/index.html?redirect=${location.pathname}`;
     } else {
         // if they are logged in then just return the token.
