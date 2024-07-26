@@ -1,4 +1,4 @@
-import { jwtDecode } from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import { loginRequest } from "./externalServices.mjs";
 import { getLocalStorage,setLocalStorage } from "./utils.mjs";
 import { displayAlerts } from "./alert.mjs";
